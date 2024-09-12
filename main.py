@@ -28,9 +28,12 @@ class Mainwindow(QMainWindow):
         self.ui_main.pushButton_2.clicked.connect(lambda: self.table_update_SI())
         self.ui_main.pushButton_3.clicked.connect(lambda: self.table_update_IO())
         self.ui_main.pushButton_4.clicked.connect(lambda: self.table_update_VO())
-        self.ui_main.tableView.clicked.connect(lambda: self.info_SI())
+        self.ui_main.tableView.clicked.connect(lambda: self.info_SI() if self.a == 1
+                                               else self.info_IO() if self.a == 2
+                                               else self.info_VO())
 
     def table_update_SI(self):
+        self.ui_main.plainTextEdit.clear()
         self.model_SI = QSqlTableModel(self, db=self.conn_SI.create_connection_SI())
         self.model_SI.setTable('database_SI')
         self.model_SI.select()
@@ -111,6 +114,7 @@ class Mainwindow(QMainWindow):
         return self.a
 
     def table_update_IO(self):
+        self.ui_main.plainTextEdit.clear()
         self.model_IO = QSqlTableModel(self, db=self.conn_IO.create_connection_IO())
         self.model_IO.setTable('database_IO')
         self.model_IO.select()
@@ -190,6 +194,7 @@ class Mainwindow(QMainWindow):
         return self.a
 
     def table_update_VO(self):
+        self.ui_main.plainTextEdit.clear()
         self.model_VO = QSqlTableModel(self, db=self.conn_VO.create_connection_VO())
         self.model_VO.setTable('database_VO')
         self.model_VO.select()
@@ -381,27 +386,49 @@ class Mainwindow(QMainWindow):
             pov_text = self.model_SI.record(sel_id).value("Поверки")
             pov_text_split = pov_text.split("@")
             p_1 = pov_text_split[-1]
-            try:
-                if pov_text_split[-1] == '':
-                    p_1 = pov_text_split[-5]
-                    if pov_text_split[-5] == '':
-                        p_1 = pov_text_split[-9]
-                        if pov_text_split[-9] == '':
-                            p_1 = pov_text_split[-13]
-                            if pov_text_split[-13] == '':
-                                p_1 = pov_text_split[-15]
-                                if pov_text_split[-15] == '':
-                                    p_1 = pov_text_split[-19]
-                                    if pov_text_split[-19] == '':
-                                        p_1 = pov_text_split[-23]
-            except IndexError:
-                pass
 
             if len(pov_text_split) == 1:
                 p_1 = "бессрочно"
 
             self.ui_main.plainTextEdit.clear()
             self.ui_main.plainTextEdit.appendPlainText(naim + "\n" + mod + "\n" + inv_num + "\n" + zav_num + "\n" + range + '\n' + pogr + '\n' + p_1)
+
+        else:
+            pass
+
+    def info_IO(self):
+        if self.ui_main.tableView.selectedIndexes()[0].row() is not None:
+            sel_id = self.ui_main.tableView.selectedIndexes()[0].row()
+        else:
+            sel_id = 0
+        if self.a == 2:
+            naim = self.model_IO.record(sel_id).value("Наименование")
+            inv_num = self.model_IO.record(sel_id).value("Инв\xa0номер")
+            zav_num = self.model_IO.record(sel_id).value("Зав\xa0номер")
+
+            att_text = self.model_IO.record(sel_id).value("Аттестация")
+            att_text_split = att_text.split("@")
+
+            att_1 = att_text_split[-1]
+            att_2 = att_text_split[-2]
+
+            self.ui_main.plainTextEdit.clear()
+            self.ui_main.plainTextEdit.appendPlainText(naim + "\n" + inv_num + "\n" + zav_num + '\n' + att_1 + '\n' + att_2)
+        else:
+            pass
+
+    def info_VO(self):
+        if self.ui_main.tableView.selectedIndexes()[0].row() is not None:
+            sel_id = self.ui_main.tableView.selectedIndexes()[0].row()
+        else:
+            sel_id = 0
+        if self.a == 3:
+            naim = self.model_VO.record(sel_id).value("Наименование")
+            inv_num = self.model_VO.record(sel_id).value("Инв\xa0номер")
+            zav_num = self.model_VO.record(sel_id).value("Зав\xa0номер")
+
+            self.ui_main.plainTextEdit.clear()
+            self.ui_main.plainTextEdit.appendPlainText(naim + "\n" + inv_num + "\n" + zav_num)
 
         else:
             pass
