@@ -25,10 +25,10 @@ class Mainwindow(QMainWindow):
         self.table_update_SI()
 
     def tablewiew(self):
-        # self.ui_main.tableView.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
         self.ui_main.pushButton_2.clicked.connect(lambda: self.table_update_SI())
         self.ui_main.pushButton_3.clicked.connect(lambda: self.table_update_IO())
         self.ui_main.pushButton_4.clicked.connect(lambda: self.table_update_VO())
+        self.ui_main.tableView.clicked.connect(lambda: self.info_SI())
 
     def table_update_SI(self):
         self.model_SI = QSqlTableModel(self, db=self.conn_SI.create_connection_SI())
@@ -194,9 +194,12 @@ class Mainwindow(QMainWindow):
         self.model_VO.setTable('database_VO')
         self.model_VO.select()
         self.ui_main.tableView.setModel(self.model_VO)
+        self.ui_main.tableView.setFixedWidth(297)
         self.ui_main.tableView.setColumnHidden(0, True)
         self.ui_main.tableView.setColumnHidden(1, False)
+        self.ui_main.tableView.setColumnWidth(1, 60)
         self.ui_main.tableView.setColumnHidden(2, False)
+        self.ui_main.tableView.setColumnWidth(2, 220)
         self.ui_main.tableView.setColumnHidden(3, True)
         self.ui_main.tableView.setColumnHidden(4, True)
         self.ui_main.tableView.setColumnHidden(5, True)
@@ -264,6 +267,83 @@ class Mainwindow(QMainWindow):
                                         "}")
         self.a = 3
         return self.a
+
+    def info_SI(self):
+        if self.ui_main.tableView.selectedIndexes()[0].row() is not None:
+            sel_id = self.ui_main.tableView.selectedIndexes()[0].row()
+        else:
+            sel_id = 0
+        if self.a == 1:
+            naim = self.model_SI.record(sel_id).value("Наименование")
+            mod = self.model_SI.record(sel_id).value("Модификация")
+            inv_num = self.model_SI.record(sel_id).value("Инв\xa0номер")
+            zav_num = self.model_SI.record(sel_id).value("Зав\xa0номер")
+
+            range_text = self.model_SI.record(sel_id).value("Диапазоны")
+            range_text_split = range_text.split("@")
+            if len(range_text_split) == 5:
+                range = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                if str(range_text_split[-4]) == " ":
+                    range = str(range_text_split[-3]) + " " + str(range_text_split[-1])
+            elif len(range_text_split) == 10:
+                r_1 = 'от ' + str(range_text_split[-9]) + ' до ' + str(range_text_split[-8]) + " " + str(range_text_split[-6])
+                r_2 = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                range = r_1 + '\n' + r_2
+            elif len(range_text_split) == 15:
+                r_1 = 'от ' + str(range_text_split[-14]) + ' до ' + str(range_text_split[-13]) + " " + str(range_text_split[-11])
+                r_2 = 'от ' + str(range_text_split[-9]) + ' до ' + str(range_text_split[-8]) + " " + str(range_text_split[-6])
+                r_3 = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                range = r_1 + '\n' + r_2 + "\n" + r_3
+            elif len(range_text_split) == 20:
+                r_1 = 'от ' + str(range_text_split[-19]) + ' до ' + str(range_text_split[-18]) + " " + str(range_text_split[-16])
+                r_2 = 'от ' + str(range_text_split[-14]) + ' до ' + str(range_text_split[-13]) + " " + str(range_text_split[-11])
+                r_3 = 'от ' + str(range_text_split[-9]) + ' до ' + str(range_text_split[-8]) + " " + str(range_text_split[-6])
+                r_4 = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                range = r_1 + '\n' + r_2 + "\n" + r_3 + "\n" + r_4
+            elif len(range_text_split) == 25:
+                r_1 = 'от ' + str(range_text_split[-24]) + ' до ' + str(range_text_split[-23]) + " " + str(range_text_split[-21])
+                r_2 = 'от ' + str(range_text_split[-19]) + ' до ' + str(range_text_split[-18]) + " " + str(range_text_split[-16])
+                r_3 = 'от ' + str(range_text_split[-14]) + ' до ' + str(range_text_split[-13]) + " " + str(range_text_split[-11])
+                r_4 = 'от ' + str(range_text_split[-9]) + ' до ' + str(range_text_split[-8]) + " " + str(range_text_split[-6])
+                r_5 = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                range = r_1 + '\n' + r_2 + "\n" + r_3 + "\n" + r_4 + "\n" + r_5
+            elif len(range_text_split) == 30:
+                r_1 = 'от ' + str(range_text_split[-29]) + ' до ' + str(range_text_split[-28]) + " " + str(range_text_split[-26])
+                r_2 = 'от ' + str(range_text_split[-24]) + ' до ' + str(range_text_split[-23]) + " " + str(range_text_split[-21])
+                r_3 = 'от ' + str(range_text_split[-19]) + ' до ' + str(range_text_split[-18]) + " " + str(range_text_split[-16])
+                r_4 = 'от ' + str(range_text_split[-14]) + ' до ' + str(range_text_split[-13]) + " " + str(range_text_split[-11])
+                r_5 = 'от ' + str(range_text_split[-9]) + ' до ' + str(range_text_split[-8]) + " " + str(range_text_split[-6])
+                r_6 = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                range = r_1 + '\n' + r_2 + "\n" + r_3 + "\n" + r_4 + "\n" + r_5 + "\n" + r_6
+            elif len(range_text_split) == 35:
+                r_1 = 'от ' + str(range_text_split[-34]) + ' до ' + str(range_text_split[-33]) + " " + str(range_text_split[-31])
+                r_2 = 'от ' + str(range_text_split[-29]) + ' до ' + str(range_text_split[-28]) + " " + str(range_text_split[-26])
+                r_3 = 'от ' + str(range_text_split[-24]) + ' до ' + str(range_text_split[-23]) + " " + str(range_text_split[-21])
+                r_4 = 'от ' + str(range_text_split[-19]) + ' до ' + str(range_text_split[-18]) + " " + str(range_text_split[-16])
+                r_5 = 'от ' + str(range_text_split[-14]) + ' до ' + str(range_text_split[-13]) + " " + str(range_text_split[-11])
+                r_6 = 'от ' + str(range_text_split[-9]) + ' до ' + str(range_text_split[-8]) + " " + str(range_text_split[-6])
+                r_7 = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                range = r_1 + '\n' + r_2 + "\n" + r_3 + "\n" + r_4 + "\n" + r_5 + "\n" + r_6 + "\n" + r_7
+            elif len(range_text_split) == 40:
+                r_1 = 'от ' + str(range_text_split[-39]) + ' до ' + str(range_text_split[-38]) + " " + str(range_text_split[-36])
+                r_2 = 'от ' + str(range_text_split[-34]) + ' до ' + str(range_text_split[-33]) + " " + str(range_text_split[-31])
+                r_3 = 'от ' + str(range_text_split[-29]) + ' до ' + str(range_text_split[-28]) + " " + str(range_text_split[-26])
+                r_4 = 'от ' + str(range_text_split[-24]) + ' до ' + str(range_text_split[-23]) + " " + str(range_text_split[-21])
+                r_5 = 'от ' + str(range_text_split[-19]) + ' до ' + str(range_text_split[-18]) + " " + str(range_text_split[-16])
+                r_6 = 'от ' + str(range_text_split[-14]) + ' до ' + str(range_text_split[-13]) + " " + str(range_text_split[-11])
+                r_7 = 'от ' + str(range_text_split[-9]) + ' до ' + str(range_text_split[-8]) + " " + str(range_text_split[-6])
+                r_8 = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                range = r_1 + '\n' + r_2 + "\n" + r_3 + "\n" + r_4 + "\n" + r_5 + "\n" + r_6 + "\n" + r_7 + '\n' + r_8
+
+
+            self.ui_main.plainTextEdit.clear()
+            self.ui_main.plainTextEdit.appendPlainText(naim + "\n" + mod + "\n" + inv_num + "\n" + zav_num + "\n" + range)
+
+            pov_text = self.model_SI.record(sel_id).value("Поверки")
+            pov_text_split = pov_text.split("@")
+
+        else:
+            pass
 
 
 if __name__ == '__main__':
