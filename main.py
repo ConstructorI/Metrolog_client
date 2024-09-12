@@ -283,64 +283,125 @@ class Mainwindow(QMainWindow):
             range_text_split = range_text.split("@")
             if len(range_text_split) == 5:
                 range = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                pogr = str(range_text_split[-2])
                 if str(range_text_split[-4]) == " ":
                     range = str(range_text_split[-3]) + " " + str(range_text_split[-1])
             elif len(range_text_split) == 10:
                 r_1 = 'от ' + str(range_text_split[-9]) + ' до ' + str(range_text_split[-8]) + " " + str(range_text_split[-6])
+                po_1 = str(range_text_split[-7])
                 r_2 = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                po_2 = str(range_text_split[-2])
                 range = r_1 + '\n' + r_2
+                pogr = po_1 + '\n' + po_2
             elif len(range_text_split) == 15:
                 r_1 = 'от ' + str(range_text_split[-14]) + ' до ' + str(range_text_split[-13]) + " " + str(range_text_split[-11])
+                po_1 = str(range_text_split[-12])
                 r_2 = 'от ' + str(range_text_split[-9]) + ' до ' + str(range_text_split[-8]) + " " + str(range_text_split[-6])
+                po_2 = str(range_text_split[-7])
                 r_3 = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                po_3 = str(range_text_split[-2])
                 range = r_1 + '\n' + r_2 + "\n" + r_3
+                pogr = po_1 + '\n' + po_2 + "\n" + po_3
             elif len(range_text_split) == 20:
                 r_1 = 'от ' + str(range_text_split[-19]) + ' до ' + str(range_text_split[-18]) + " " + str(range_text_split[-16])
+                po_1 = str(range_text_split[-17])
                 r_2 = 'от ' + str(range_text_split[-14]) + ' до ' + str(range_text_split[-13]) + " " + str(range_text_split[-11])
+                po_2 = str(range_text_split[-12])
                 r_3 = 'от ' + str(range_text_split[-9]) + ' до ' + str(range_text_split[-8]) + " " + str(range_text_split[-6])
+                po_3 = str(range_text_split[-7])
                 r_4 = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                po_4 = str(range_text_split[-2])
                 range = r_1 + '\n' + r_2 + "\n" + r_3 + "\n" + r_4
+                pogr = po_1 + '\n' + po_2 + "\n" + po_3 + "\n" + po_4
             elif len(range_text_split) == 25:
                 r_1 = 'от ' + str(range_text_split[-24]) + ' до ' + str(range_text_split[-23]) + " " + str(range_text_split[-21])
+                po_1 = str(range_text_split[-22])
                 r_2 = 'от ' + str(range_text_split[-19]) + ' до ' + str(range_text_split[-18]) + " " + str(range_text_split[-16])
+                po_2 = str(range_text_split[-17])
                 r_3 = 'от ' + str(range_text_split[-14]) + ' до ' + str(range_text_split[-13]) + " " + str(range_text_split[-11])
+                po_3 = str(range_text_split[-12])
                 r_4 = 'от ' + str(range_text_split[-9]) + ' до ' + str(range_text_split[-8]) + " " + str(range_text_split[-6])
+                po_4 = str(range_text_split[-7])
                 r_5 = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                po_5 = str(range_text_split[-2])
                 range = r_1 + '\n' + r_2 + "\n" + r_3 + "\n" + r_4 + "\n" + r_5
+                pogr = po_1 + '\n' + po_2 + "\n" + po_3 + "\n" + po_4 + '\n' + po_5
             elif len(range_text_split) == 30:
                 r_1 = 'от ' + str(range_text_split[-29]) + ' до ' + str(range_text_split[-28]) + " " + str(range_text_split[-26])
+                po_1 = str(range_text_split[-27])
                 r_2 = 'от ' + str(range_text_split[-24]) + ' до ' + str(range_text_split[-23]) + " " + str(range_text_split[-21])
+                po_2 = str(range_text_split[-22])
                 r_3 = 'от ' + str(range_text_split[-19]) + ' до ' + str(range_text_split[-18]) + " " + str(range_text_split[-16])
+                po_3 = str(range_text_split[-17])
                 r_4 = 'от ' + str(range_text_split[-14]) + ' до ' + str(range_text_split[-13]) + " " + str(range_text_split[-11])
+                po_4 = str(range_text_split[-12])
                 r_5 = 'от ' + str(range_text_split[-9]) + ' до ' + str(range_text_split[-8]) + " " + str(range_text_split[-6])
+                po_5 = str(range_text_split[-7])
                 r_6 = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                po_6 = str(range_text_split[-2])
                 range = r_1 + '\n' + r_2 + "\n" + r_3 + "\n" + r_4 + "\n" + r_5 + "\n" + r_6
+                pogr = po_1 + '\n' + po_2 + "\n" + po_3 + "\n" + po_4 + '\n' + po_5 + '\n' + po_6
             elif len(range_text_split) == 35:
                 r_1 = 'от ' + str(range_text_split[-34]) + ' до ' + str(range_text_split[-33]) + " " + str(range_text_split[-31])
+                po_1 = str(range_text_split[-32])
                 r_2 = 'от ' + str(range_text_split[-29]) + ' до ' + str(range_text_split[-28]) + " " + str(range_text_split[-26])
+                po_2 = str(range_text_split[-27])
                 r_3 = 'от ' + str(range_text_split[-24]) + ' до ' + str(range_text_split[-23]) + " " + str(range_text_split[-21])
+                po_3 = str(range_text_split[-22])
                 r_4 = 'от ' + str(range_text_split[-19]) + ' до ' + str(range_text_split[-18]) + " " + str(range_text_split[-16])
+                po_4 = str(range_text_split[-17])
                 r_5 = 'от ' + str(range_text_split[-14]) + ' до ' + str(range_text_split[-13]) + " " + str(range_text_split[-11])
+                po_5 = str(range_text_split[-12])
                 r_6 = 'от ' + str(range_text_split[-9]) + ' до ' + str(range_text_split[-8]) + " " + str(range_text_split[-6])
+                po_6 = str(range_text_split[-7])
                 r_7 = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                po_7 = str(range_text_split[-2])
                 range = r_1 + '\n' + r_2 + "\n" + r_3 + "\n" + r_4 + "\n" + r_5 + "\n" + r_6 + "\n" + r_7
+                pogr = po_1 + '\n' + po_2 + "\n" + po_3 + "\n" + po_4 + '\n' + po_5 + '\n' + po_6 + '\n' + po_7
             elif len(range_text_split) == 40:
                 r_1 = 'от ' + str(range_text_split[-39]) + ' до ' + str(range_text_split[-38]) + " " + str(range_text_split[-36])
+                po_1 = str(range_text_split[-37])
                 r_2 = 'от ' + str(range_text_split[-34]) + ' до ' + str(range_text_split[-33]) + " " + str(range_text_split[-31])
+                po_2 = str(range_text_split[-32])
                 r_3 = 'от ' + str(range_text_split[-29]) + ' до ' + str(range_text_split[-28]) + " " + str(range_text_split[-26])
+                po_3 = str(range_text_split[-27])
                 r_4 = 'от ' + str(range_text_split[-24]) + ' до ' + str(range_text_split[-23]) + " " + str(range_text_split[-21])
+                po_4 = str(range_text_split[-22])
                 r_5 = 'от ' + str(range_text_split[-19]) + ' до ' + str(range_text_split[-18]) + " " + str(range_text_split[-16])
+                po_5 = str(range_text_split[-17])
                 r_6 = 'от ' + str(range_text_split[-14]) + ' до ' + str(range_text_split[-13]) + " " + str(range_text_split[-11])
+                po_6 = str(range_text_split[-12])
                 r_7 = 'от ' + str(range_text_split[-9]) + ' до ' + str(range_text_split[-8]) + " " + str(range_text_split[-6])
+                po_7 = str(range_text_split[-7])
                 r_8 = 'от ' + str(range_text_split[-4]) + ' до ' + str(range_text_split[-3]) + " " + str(range_text_split[-1])
+                po_8 = str(range_text_split[-2])
                 range = r_1 + '\n' + r_2 + "\n" + r_3 + "\n" + r_4 + "\n" + r_5 + "\n" + r_6 + "\n" + r_7 + '\n' + r_8
-
-
-            self.ui_main.plainTextEdit.clear()
-            self.ui_main.plainTextEdit.appendPlainText(naim + "\n" + mod + "\n" + inv_num + "\n" + zav_num + "\n" + range)
+                pogr = po_1 + '\n' + po_2 + "\n" + po_3 + "\n" + po_4 + '\n' + po_5 + '\n' + po_6 + '\n' + po_7 + '\n' + po_8
 
             pov_text = self.model_SI.record(sel_id).value("Поверки")
             pov_text_split = pov_text.split("@")
+            p_1 = pov_text_split[-1]
+            try:
+                if pov_text_split[-1] == '':
+                    p_1 = pov_text_split[-5]
+                    if pov_text_split[-5] == '':
+                        p_1 = pov_text_split[-9]
+                        if pov_text_split[-9] == '':
+                            p_1 = pov_text_split[-13]
+                            if pov_text_split[-13] == '':
+                                p_1 = pov_text_split[-15]
+                                if pov_text_split[-15] == '':
+                                    p_1 = pov_text_split[-19]
+                                    if pov_text_split[-19] == '':
+                                        p_1 = pov_text_split[-23]
+            except IndexError:
+                pass
+
+            if len(pov_text_split) == 1:
+                p_1 = "бессрочно"
+
+            self.ui_main.plainTextEdit.clear()
+            self.ui_main.plainTextEdit.appendPlainText(naim + "\n" + mod + "\n" + inv_num + "\n" + zav_num + "\n" + range + '\n' + pogr + '\n' + p_1)
 
         else:
             pass
