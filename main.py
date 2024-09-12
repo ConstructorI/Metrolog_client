@@ -385,13 +385,48 @@ class Mainwindow(QMainWindow):
 
             pov_text = self.model_SI.record(sel_id).value("Поверки")
             pov_text_split = pov_text.split("@")
-            p_1 = pov_text_split[-1]
+            pov_last = pov_text_split[-1]
 
             if len(pov_text_split) == 1:
-                p_1 = "бессрочно"
+                pov_last = "бессрочно"
+                all_pov = "нет"
+
+            if len(pov_text_split) == 4:
+                p_1 = "от " + pov_text_split[-4] + " до " + pov_text_split[-1]
+                all_pov = p_1
+            elif len(pov_text_split) == 8:
+                p_1 = "от " + pov_text_split[-8] + " до " + pov_text_split[-5]
+                p_2 = "от " + pov_text_split[-4] + " до " + pov_text_split[-1]
+                all_pov = p_1 + '\n' + p_2
+            elif len(pov_text_split) == 12:
+                p_1 = "от " + pov_text_split[-12] + " до " + pov_text_split[-9]
+                p_2 = "от " + pov_text_split[-8] + " до " + pov_text_split[-5]
+                p_3 = "от " + pov_text_split[-4] + " до " + pov_text_split[-1]
+                all_pov = p_1 + '\n' + p_2 + "\n" + p_3
+            elif len(pov_text_split) == 16:
+                p_1 = "от " + pov_text_split[-16] + " до " + pov_text_split[-13]
+                p_2 = "от " + pov_text_split[-12] + " до " + pov_text_split[-9]
+                p_3 = "от " + pov_text_split[-8] + " до " + pov_text_split[-5]
+                p_4 = "от " + pov_text_split[-4] + " до " + pov_text_split[-1]
+                all_pov = p_1 + '\n' + p_2 + "\n" + p_3 + "\n" + p_4
+            elif len(pov_text_split) == 20:
+                p_1 = "от " + pov_text_split[-20] + " до " + pov_text_split[-17]
+                p_2 = "от " + pov_text_split[-16] + " до " + pov_text_split[-13]
+                p_3 = "от " + pov_text_split[-12] + " до " + pov_text_split[-9]
+                p_4 = "от " + pov_text_split[-8] + " до " + pov_text_split[-5]
+                p_5 = "от " + pov_text_split[-4] + " до " + pov_text_split[-1]
+                all_pov = p_1 + '\n' + p_2 + "\n" + p_3 + "\n" + p_4 + "\n" + p_5
+            elif len(pov_text_split) == 24:
+                p_1 = "от " + pov_text_split[-24] + " до " + pov_text_split[-21]
+                p_2 = "от " + pov_text_split[-20] + " до " + pov_text_split[-17]
+                p_3 = "от " + pov_text_split[-16] + " до " + pov_text_split[-13]
+                p_4 = "от " + pov_text_split[-12] + " до " + pov_text_split[-9]
+                p_5 = "от " + pov_text_split[-8] + " до " + pov_text_split[-5]
+                p_6 = "от " + pov_text_split[-4] + " до " + pov_text_split[-1]
+                all_pov = p_1 + '\n' + p_2 + "\n" + p_3 + "\n" + p_4 + "\n" + p_5 + "\n" + p_6
 
             self.ui_main.plainTextEdit.clear()
-            self.ui_main.plainTextEdit.appendPlainText(naim + " " + mod + "\n\nзав. № " + zav_num + "\nинв. № " + inv_num + "\n\n" + range + '\n\n' + pogr + '\n\n' + p_1)
+            self.ui_main.plainTextEdit.appendPlainText(naim + " " + mod + "\n\nзав. № " + zav_num + "\nинв. № " + inv_num + "\n\n" + range + '\n\n' + pogr + '\n\n' + pov_last + '\n\nВсе поверки:\n' + all_pov)
 
         else:
             pass
@@ -412,8 +447,42 @@ class Mainwindow(QMainWindow):
             att_1 = att_text_split[-1]
             att_2 = att_text_split[-2]
 
+            if len(att_text_split) == 4:
+                p_1 = "от " + att_text_split[-4] + " до " + att_text_split[-1] + "   Протокол № " + att_text_split[-2]
+                all_pov = p_1
+            elif len(att_text_split) == 8:
+                p_1 = "от " + att_text_split[-8] + " до " + att_text_split[-5] + "   Протокол № " + att_text_split[-6]
+                p_2 = "от " + att_text_split[-4] + " до " + att_text_split[-1] + "   Протокол № " + att_text_split[-2]
+                all_pov = p_1 + '\n' + p_2
+            elif len(att_text_split) == 12:
+                p_1 = "от " + att_text_split[-12] + " до " + att_text_split[-9] + "   Протокол № " + att_text_split[-10]
+                p_2 = "от " + att_text_split[-8] + " до " + att_text_split[-5] + "   Протокол № " + att_text_split[-6]
+                p_3 = "от " + att_text_split[-4] + " до " + att_text_split[-1] + "   Протокол № " + att_text_split[-2]
+                all_pov = p_1 + '\n' + p_2 + "\n" + p_3
+            elif len(att_text_split) == 16:
+                p_1 = "от " + att_text_split[-16] + " до " + att_text_split[-13] + "   Протокол № " + att_text_split[-14]
+                p_2 = "от " + att_text_split[-12] + " до " + att_text_split[-9] + "   Протокол № " + att_text_split[-10]
+                p_3 = "от " + att_text_split[-8] + " до " + att_text_split[-5] + "   Протокол № " + att_text_split[-6]
+                p_4 = "от " + att_text_split[-4] + " до " + att_text_split[-1] + "   Протокол № " + att_text_split[-2]
+                all_pov = p_1 + '\n' + p_2 + "\n" + p_3 + "\n" + p_4
+            elif len(att_text_split) == 20:
+                p_1 = "от " + att_text_split[-20] + " до " + att_text_split[-17] + "   Протокол № " + att_text_split[-18]
+                p_2 = "от " + att_text_split[-16] + " до " + att_text_split[-13] + "   Протокол № " + att_text_split[-14]
+                p_3 = "от " + att_text_split[-12] + " до " + att_text_split[-9] + "   Протокол № " + att_text_split[-10]
+                p_4 = "от " + att_text_split[-8] + " до " + att_text_split[-5] + "   Протокол № " + att_text_split[-6]
+                p_5 = "от " + att_text_split[-4] + " до " + att_text_split[-1] + "   Протокол № " + att_text_split[-2]
+                all_pov = p_1 + '\n' + p_2 + "\n" + p_3 + "\n" + p_4 + "\n" + p_5
+            elif len(att_text_split) == 24:
+                p_1 = "от " + att_text_split[-24] + " до " + att_text_split[-21] + "   Протокол № " + att_text_split[-22]
+                p_2 = "от " + att_text_split[-20] + " до " + att_text_split[-17] + "   Протокол № " + att_text_split[-18]
+                p_3 = "от " + att_text_split[-16] + " до " + att_text_split[-13] + "   Протокол № " + att_text_split[-14]
+                p_4 = "от " + att_text_split[-12] + " до " + att_text_split[-9] + "   Протокол № " + att_text_split[-10]
+                p_5 = "от " + att_text_split[-8] + " до " + att_text_split[-5] + "   Протокол № " + att_text_split[-6]
+                p_6 = "от " + att_text_split[-4] + " до " + att_text_split[-1] + "   Протокол № " + att_text_split[-2]
+                all_pov = p_1 + '\n' + p_2 + "\n" + p_3 + "\n" + p_4 + "\n" + p_5 + "\n" + p_6
+
             self.ui_main.plainTextEdit.clear()
-            self.ui_main.plainTextEdit.appendPlainText(naim + "\n\nзав. № " + zav_num + "\nинв. № " + inv_num + '\n\nПротокол №\n' + att_2 + '\n\nдо ' + att_1)
+            self.ui_main.plainTextEdit.appendPlainText(naim + "\n\nзав. № " + zav_num + "\nинв. № " + inv_num + '\n\nПротокол №\n' + att_2 + '\n\nдо ' + att_1 + '\n\nВсе аттестации:\n' + all_pov)
         else:
             pass
 
