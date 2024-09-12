@@ -23,8 +23,8 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(700, 339)
-        MainWindow.setMinimumSize(QSize(700, 0))
+        MainWindow.resize(700, 450)
+        MainWindow.setMinimumSize(QSize(700, 450))
         MainWindow.setStyleSheet(u"QWidget {\n"
 "	font: 8pt \"Bahnschrift\";\n"
 "	color: rgb(60, 66, 92);\n"
@@ -145,22 +145,10 @@ class Ui_MainWindow(object):
         self.plainTextEdit = QPlainTextEdit(self.centralwidget)
         self.plainTextEdit.setObjectName(u"plainTextEdit")
         self.plainTextEdit.setMinimumSize(QSize(200, 200))
+        self.plainTextEdit.setStyleSheet(u"font: 10pt \"Times New Roman\";")
+        self.plainTextEdit.setReadOnly(True)
 
         self.verticalLayout.addWidget(self.plainTextEdit)
-
-        self.pushButton = QPushButton(self.centralwidget)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMinimumSize(QSize(0, 25))
-        self.pushButton.setBaseSize(QSize(0, 0))
-
-        self.verticalLayout.addWidget(self.pushButton)
-
-        self.widget = QWidget(self.centralwidget)
-        self.widget.setObjectName(u"widget")
-        self.widget.setMinimumSize(QSize(0, 50))
-        self.widget.setBaseSize(QSize(0, 0))
-
-        self.verticalLayout.addWidget(self.widget)
 
 
         self.horizontalLayout.addLayout(self.verticalLayout)
@@ -183,6 +171,5 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0418", None))
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"\u0418\u041e", None))
         self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"\u0412\u041e", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c", None))
     # retranslateUi
 

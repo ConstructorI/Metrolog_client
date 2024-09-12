@@ -391,7 +391,7 @@ class Mainwindow(QMainWindow):
                 p_1 = "бессрочно"
 
             self.ui_main.plainTextEdit.clear()
-            self.ui_main.plainTextEdit.appendPlainText(naim + "\n" + mod + "\n" + inv_num + "\n" + zav_num + "\n" + range + '\n' + pogr + '\n' + p_1)
+            self.ui_main.plainTextEdit.appendPlainText(naim + " " + mod + "\n\nзав. № " + zav_num + "\nинв. № " + inv_num + "\n\n" + range + '\n\n' + pogr + '\n\n' + p_1)
 
         else:
             pass
@@ -413,7 +413,7 @@ class Mainwindow(QMainWindow):
             att_2 = att_text_split[-2]
 
             self.ui_main.plainTextEdit.clear()
-            self.ui_main.plainTextEdit.appendPlainText(naim + "\n" + inv_num + "\n" + zav_num + '\n' + att_1 + '\n' + att_2)
+            self.ui_main.plainTextEdit.appendPlainText(naim + "\n\nзав. № " + zav_num + "\nинв. № " + inv_num + '\n\nПротокол №\n' + att_2 + '\n\nдо ' + att_1)
         else:
             pass
 
@@ -428,7 +428,7 @@ class Mainwindow(QMainWindow):
             zav_num = self.model_VO.record(sel_id).value("Зав\xa0номер")
 
             self.ui_main.plainTextEdit.clear()
-            self.ui_main.plainTextEdit.appendPlainText(naim + "\n" + inv_num + "\n" + zav_num)
+            self.ui_main.plainTextEdit.appendPlainText(naim + "\n\nзав. № " + zav_num + "\nинв. № " + inv_num + '\n\nвспомогательное, не применимо')
 
         else:
             pass
